@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-ink-50 text-ink-900 antialiased dark:bg-ink-950 dark:text-ink-100;
+}
+
+::selection {
+  @apply bg-brass-400/40;
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-6 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.18em] text-brass-600 dark:text-brass-400;
+  }
+
+  .section-title {
+    @apply font-serif text-3xl leading-tight tracking-tight text-ink-900 sm:text-4xl dark:text-white;
+  }
+
+  .card {
+    @apply rounded-2xl border border-ink-200/80 bg-white shadow-card transition-all duration-300 dark:border-white/10 dark:bg-ink-900 dark:shadow-card-dark;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-brass-500/50 hover:shadow-[0_20px_40px_-20px_rgba(212,162,76,0.35)];
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-ink-900 px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-brass-500 hover:text-ink-950 hover:shadow-[0_12px_30px_-10px_rgba(212,162,76,0.6)] dark:bg-white dark:text-ink-950 dark:hover:bg-brass-400;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 rounded-full border border-ink-300 px-6 py-3 text-sm font-semibold text-ink-800 transition-all duration-300 hover:border-brass-500 hover:text-brass-600 dark:border-white/20 dark:text-ink-100 dark:hover:border-brass-400 dark:hover:text-brass-400;
+  }
+}
+
+/* Scroll-reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Subtle grid backdrop for hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(15, 19, 32, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 19, 32, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 0%, black 30%, transparent 75%);
+}
+
+.dark .hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #d4a24c, #f2d7a1, #d4a24c);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
